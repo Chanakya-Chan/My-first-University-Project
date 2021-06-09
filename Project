@@ -1,0 +1,349 @@
+'''This is my project in which we were given the lryics of a song and we were to do some actions on the lyrics'''
+a='''Let me be your hero
+Would you dance
+If I asked you to dance?
+Would you run
+And never look back?
+Would you cry
+If you saw me crying?
+And would you save my soul, tonight?
+Would you tremble
+If I touched your lips?
+Would you laugh?
+Oh please tell me this.
+Now would you die
+For the one you loved?
+Hold me in your arms, tonight.
+I can be your hero, baby.
+I can kiss away the pain.
+I will stand by you forever.
+You can take my breath away.
+Would you swear
+That you'll always be mine?
+Or would you lie?
+Would you run and hide?
+Am I in too deep?
+Have I lost my mind?
+I don't care...
+You're here tonight.
+I can be your hero, baby.
+I can kiss away the pain.
+I will stand by you forever.
+You can take my breath away.
+Oh, I just want to hold you.
+I just want to hold you, oh, yeah.
+Am I in too…
+'''
+
+while(1):
+    print("countnumber of alphabets, press 1")
+    print("countnumber of words, press 2")
+    print("to check if a word is in the string, press 3")
+    print("to convert i to I, press 4")
+    print("to convert all the alphabets to lower case, press 5")
+    print("to convert all the alphabets to upper case, press 6")
+    print("to convert all lower case letters to upper case and vice versa, press 7")
+    print("to print the whole string in reverse and all the words are also reversed, press 8")
+    print("to find the frequency of each word, press 9")
+    print("to print the frequency of each alphabet, press 10")
+    print("to count the number of words with given length, press 11")
+    print("to print the number of characters other than alphabets, press 12")
+    print("to find the number of vowels, press 13")
+    print("to find all the words in descending order of their length, press 14")
+    print("to print a dictionary whose key is an integer and value is a list containing all the words with its len=key, press 15")
+    print("to find all the non-repeating words, press 16")
+    print("to find number of times each vowel is in the paragraph and this is not case sensitive, press 17")
+    print("to find the index(can be multiple) of a given word if exist, press 18")
+    print("to replace any word of the paragraph with a word of your wish, press 19")
+    print("to replace a word using the position of word, press 20")
+    
+    
+    function_number=int(input("enter number"))
+    
+    
+    if function_number==1:
+        number=0
+        for i in a:
+            if ord(i)>64 and ord(i)<91:
+                number=number + 1
+            elif  ord(i)>96 and ord(i)<123:
+                number=number + 1
+        print("number of alphabets is",number)
+        
+        
+    elif function_number==2:
+        b=a.split()
+        sum=0
+        for i in b:
+            sum=sum+1
+        print("number of words are",sum)
+        
+        
+    elif function_number==3:
+        #this is case sensitive
+        flag=0
+        b=input()
+        for i in a:
+            if i==b:
+                flag=1
+            break
+        if flag==1:
+            print("yes")
+        else:
+            print("no")
+            
+            
+    elif function_number==4:
+        s=''
+        for i in a:
+            if i=='i':
+                s=s+'I'
+            else:
+                s=s+i
+        a=s
+        print(a)
+        
+        
+    elif function_number==5:
+        st=''
+        for  i in a :
+            if ord(i)>64 and ord(i)<91:
+                st=st+chr(ord(i)+32)
+            else:
+                st=st+i
+        print(st)
+        
+        
+    elif function_number==6:
+        st=''
+        for  i in a :
+            if ord(i)>96 and ord(i)<123:
+                st=st+chr(ord(i)-32)
+            else:
+                st=st+i
+        print(st)
+        
+        
+    elif function_number==7:
+        st=' '
+        for i in a:
+            if ord(i)>64 and ord(i)<91:
+                st=st+chr(ord(i)+32)
+            elif ord(i)>96 and ord(i)<123:
+                st=st+chr(ord(i)-32)
+            else:
+                st=st+i
+        print(st)
+        
+        
+    elif function_number==8:
+        '''In this the output is like reading the paragraph from last line and letter wise'''
+        for i in range(len(a)-1,-1,-1):
+            print(a[i],end='')
+            
+            
+    elif function_number==9:
+        '''This prints the frequency of all words there is no need of entering any word'''
+        frequency_words={}
+        words=a.split()
+        list=[]
+        for k in words:
+            if k not in list:
+                frequency_words[k]=1
+                list.append(k)
+            else:
+                frequency_words[k]=frequency_words[k]+1
+        print(frequency_words)
+        
+        
+    elif function_number==10:
+        '''This program is case-sensetive and doesn't require any input'''
+        frequency_alphabets={}
+        alphabets_list=[]
+        for i in a:
+            if i not in alphabets_list:
+                alphabets_list.append(i)
+                frequency_alphabets[i]=1
+            else:
+                frequency_alphabets[i]=frequency_alphabets[i]+1
+        print(frequency_alphabets)
+        
+        
+    elif function_number==11:
+    '''In this '.' also has length. Moving '.' in the paragraph to next position might cause any problem to other questions. So it is avoided here(a single code for all the 20 questions.
+    If it is required to write code only for this question then it can be done without any difficulty because changing the string in this does not cause any change to other questions)'''
+        word_list=a.split()
+        length=int(input("enter a value"))
+        for i in word_list:
+            if len(i)==length:
+                print(i)
+                
+                
+    elif function_number==12:
+        sum=0
+        for i in a:
+            if ord(i)<65 or ord(i)>122:
+                sum=sum+1
+            elif ord(i)>90 and ord(i)<97:
+                sum=sum+1
+        print(sum)
+        
+        
+    elif function_number==13:
+        def vowel_frequency():
+            sum=0
+            for i in a:
+                if i=='a' or i=='e' or i=='i' or i=='o' or i=='u' or i=='A' or i=='E' or i=='I' or i=='O' or i=='U':
+                    sum=sum+1
+            return sum
+        c=vowel_frequency()
+        print(c)
+        
+        
+    elif function_number==14:
+    '''. also has length'''
+        def func():
+            list=[]
+            word_list=a.split()
+            max_len=0
+            for i in word_list:
+                if len(i)>max_len:
+                    max_len=len(i)
+            while(max_len>0):
+                for j in word_list:
+                    if len(j)==max_len:
+                        list.append(j)
+                max_len=max_len-1
+            return list
+        d=func()
+        all_words=[]
+        for i in d:
+            if i not in all_words:
+                all_words.append(i)
+        print(all_words)
+        
+        
+    elif function_number==15:
+    '''. also has length and the dictionary will be in the ascending order of length'''
+        def function():
+            dict={}
+            word_list=a.split()
+            max_len=0
+            for i in word_list:
+                if len(i)>max_len:
+                    max_len=len(i)
+                    c=max_len
+            while(max_len>0):
+                for j in word_list:
+                    if len(j)==max_len:
+                        if max_len in dict:
+                            (dict[max_len]).append(j)
+                        else:
+                            dict[max_len]=[j]
+                max_len=max_len-1
+            return dict
+        d=function()
+        print(d)
+        
+        
+    elif function_number==16:
+    '''If any word is repeated more than 1 time it is not considered'''
+        def func16():
+            words=a.split()
+            b=words
+            str=''
+            for i in range (len(words)):
+                flag=0
+                for j in range (i+1,len(b)):
+                    if words[i]==words[j]:
+                        flag=1
+                if flag==0:
+                    str=str+words[i]+' '
+            return str
+        c=func16()
+        print(c)
+        
+        
+    elif function_number==17:
+        sum_a=0
+        sum_e=0
+        sum_i=0
+        sum_o=0
+        sum_u=0
+        for i in a:
+            if i=='i' or i=='I' :
+                sum_i=sum_i+1
+            elif i=='a' or i=='A':
+                sum_a=sum_a+1
+            elif i=='e' or i=='E':
+                sum_e=sum_e+1
+            elif i=='o' or i=='O':
+                sum_o=sum_o+1
+            elif i=='u' or i=='U':
+                sum_u=sum_u+1
+        print("number of times a repeated is",sum_a)
+        print("number of times e repeated is",sum_e)
+        print("number of times i repeated is",sum_i)
+        print("number of times o repeated is",sum_o)
+        print("number of times u repeated is",sum_u)
+        
+        
+    elif function_number==18:
+        '''the index of the 1st word is 0,2nd word is 1,3rd word is 2,......'''
+        def func18():
+            index_list=[]
+            n=input("enter a word")
+            word_list=a.split()
+            c=len(word_list)
+            k=0
+            for i in range (c):
+                if word_list[k]==n:
+                    index_list.append(i)
+                    word_list.remove(word_list[0])
+                else:
+                    k=k+1
+            return index_list
+        print("the indices of the word are: "func18())
+        
+        
+    elif function_number==19:
+    '''me and me. are different in this program and it is considered in this way because of the problem mentioned above
+    in question number 11'''
+        def func19():
+            st=''
+            d=input("enter the alphabet which is to be replaced")
+            e=input("enter the alphabet to be replace with")
+            #here you are replacing d with e
+            for i in a:
+                if i==d:
+                    st=st+e
+                else:
+                    st=st+i
+            return st
+        print(func19())
+        
+    elif function_number==20:
+    '''The problem is same as that of in question number 19'''
+        def func20():
+            word_list=a.split()
+            m=input("enter a word")
+            x=int(input("enter the position of the word"))
+            d=word_list[x-1]
+            e=a.split('\n')
+            str=''
+            for i in e:
+                st=''
+                for j in i.split():
+                    if j==d:
+                        st=st+m+' '
+                    else:
+                        st=st+j+' '
+                str=str+st+'\n'
+            return str
+        print(func20())
+        
+        
+    print("if you want to continue the program, enter 1 else enter 0")
+    break_number=int(input())
+    if break_number==0:
+        break
